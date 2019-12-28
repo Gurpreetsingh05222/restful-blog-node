@@ -19,8 +19,12 @@ let blogSchema = new mongoose.Schema({
 let Blog = mongoose.model("Blog", blogSchema);
 
 //Routes
+app.get("/", function(req, res){
+    res.redirect("/blogs");
+});
 
+app.get("/blogs", function(req, res){
+    res.render("index");
+});
 
-app.listen(process.env.PORT, process.env.IP, function(){
-    console.log("Server is Running");
-})
+app.listen(3000, () => console.log("Server is running on 3000"));
