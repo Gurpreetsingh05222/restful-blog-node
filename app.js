@@ -19,12 +19,12 @@ let blogSchema = new mongoose.Schema({
 let Blog = mongoose.model("Blog", blogSchema);
 
 //Routes
-app.get("/", function(req, res){
+app.get("/", (req, res) => {
     res.redirect("/blogs");
 });
 
-app.get("/blogs", function(req, res){
-    Blog.find({}, function(err, blogs){
+app.get("/blogs", (req, res) => {
+    Blog.find({}, (err, blogs) => {
         if(err){
             console.log('error');
         }
