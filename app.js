@@ -34,4 +34,20 @@ app.get("/blogs", (req, res) => {
     })
 });
 
+//New blog post
+app.get("/blogs/new", (req,res) => {
+    res.render("new");
+});
+
+//Create Blog
+app.post("/blogs", (req, res) => {
+    Blog.create(req.body.blog, (err, newBlog) => {
+        if(err){
+            res.render("new");
+        }else{
+            res.redirect("/blogs");
+        }
+    });
+});
+
 app.listen(3000, () => console.log("Server is running on 3000"));
