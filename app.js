@@ -58,4 +58,12 @@ app.get("/blogs/:id", (req, res) => {
     })
 });
 
+//Edit blog
+app.get("/blogs/:id/edit", (req, res) => {
+    Blog.findById(req.params.id, (err, foundBlog) => {
+        if(err) res.render("/blogs");
+        else res.render("edit", {blog: foundBlog});
+    })
+});
+
 app.listen(3000, () => console.log("Server is running on 3000"));
